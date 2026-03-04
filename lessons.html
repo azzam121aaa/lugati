@@ -1,86 +1,171 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>الدروس - منصة لغتي</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&family=Cairo:wght@400;700;800;900&family=Almarai:wght@400;700;800&family=Changa:wght@400;700;800&family=Amiri:wght@400;700&family=Readex+Pro:wght@400;700;800&family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#fff;--panel:rgba(255,255,255,.78);--text:#151515;--muted:rgba(0,0,0,.62);--stroke:rgba(0,0,0,.09);
-      --accent:#ff7a00;--accent2:#ff9a2f;--shadow:0 18px 45px rgba(0,0,0,.12);--soft:0 10px 25px rgba(0,0,0,.10);--r:18px;
-      --font:"Tajawal",system-ui,-apple-system,"Segoe UI",Arial;}
-    [data-theme="dark"]{--bg:#071826;--panel:rgba(8,24,38,.72);--text:#f3f6f9;--muted:rgba(243,246,249,.72);--stroke:rgba(255,255,255,.12);
-      --accent:#19b36b;--accent2:#0f7f4b;--shadow:0 22px 55px rgba(0,0,0,.45);--soft:0 12px 30px rgba(0,0,0,.40);}
-    *{box-sizing:border-box} body{margin:0;min-height:100vh;font-family:var(--font);color:var(--text);background:var(--bg);padding:18px}
-    .wrap{width:min(1040px,92vw);margin:0 auto}
-    .head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
-    .btn{border:0;cursor:pointer;border-radius:14px;padding:12px 16px;font-weight:1000;font-family:var(--font);text-decoration:none;display:inline-flex;align-items:center;gap:10px}
-    .ghost{background:rgba(255,255,255,.45);border:1px solid var(--stroke);color:var(--text);box-shadow:var(--soft)}
-    [data-theme="dark"] .ghost{background:rgba(255,255,255,.08)}
-    .panel{margin-top:14px;padding:16px;border-radius:var(--r);background:linear-gradient(180deg,var(--panel),rgba(255,255,255,.06));border:1px solid var(--stroke);box-shadow:var(--shadow)}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-    @media(max-width:900px){.cards{grid-template-columns:1fr}}
-    .card{border:1px solid var(--stroke);border-radius:16px;background:rgba(255,255,255,.40);padding:14px;box-shadow:var(--soft)}
-    [data-theme="dark"] .card{background:rgba(255,255,255,.08)}
-    h1{margin:0;font-weight:1000}
-    .muted{color:var(--muted);font-weight:900;margin:6px 0 0}
-    .primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 14px 30px rgba(255,122,0,.22)}
-    [data-theme="dark"] .primary{box-shadow:0 14px 30px rgba(25,179,107,.18)}
-  </style>
+<meta charset="UTF-8">
+<title>الدروس - منصة لغتي</title>
+
+<style>
+
+body{
+font-family: Tahoma;
+background:#f5f5f5;
+margin:0;
+padding:20px;
+}
+
+h1{
+text-align:center;
+}
+
+.lesson{
+background:white;
+padding:20px;
+margin:20px;
+border-radius:10px;
+box-shadow:0 0 10px #ddd;
+}
+
+.map{
+background:#eef6ff;
+padding:15px;
+border-radius:8px;
+margin-top:10px;
+}
+
+.example{
+background:#f9f9f9;
+padding:10px;
+margin-top:10px;
+border-right:5px solid orange;
+}
+
+.syntax{
+background:#fff4e6;
+padding:10px;
+margin-top:10px;
+border-right:5px solid #ff7a00;
+}
+
+button{
+background:orange;
+color:white;
+border:none;
+padding:10px 20px;
+margin-top:10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+</style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="head">
-      <div>
-        <h1>📘 الدروس</h1>
-        <div class="muted" id="studentLine"></div>
-      </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn ghost" href="index.html">🏠 الواجهة</a>
-        <a class="btn ghost" href="results.html">📊 نتائجك</a>
-      </div>
-    </div>
 
-    <div class="panel">
-      <div class="muted">اختر درسًا (الملخص + خريطة مفاهيم + تدريب):</div>
-      <div class="cards" id="cards"></div>
-    </div>
-  </div>
+<h1>📘 الدروس</h1>
 
-<script>
-  // theme + font
-  document.body.setAttribute("data-theme", localStorage.getItem("lughaty_theme") || "light");
-  const f = localStorage.getItem("lughaty_font") || "Tajawal";
-  document.documentElement.style.setProperty("--font", `"${f}", system-ui, -apple-system, "Segoe UI", Arial`);
 
-  const name = localStorage.getItem("lughaty_name") || "";
-  const cls = localStorage.getItem("lughaty_class") || "";
-  document.getElementById("studentLine").textContent = (name && cls) ? `🎓 ${name} — ${cls}` : "🎓 بيانات الطالب غير محفوظة";
+<div class="lesson">
+<h2>الدرس 1 : الجملة الاسمية</h2>
 
-  const lessons = [
-    {id:1, t:"أسلوب الشرط والتوكيد"},
-    {id:2, t:"تنوين المقصور والمنقوص والممدود"},
-    {id:3, t:"الألف اللينة المتطرفة"},
-    {id:4, t:"حروف الجر مع (ما/من)"},
-    {id:5, t:"رفع الفعل المضارع"},
-    {id:6, t:"نصب الفعل المضارع"},
-    {id:7, t:"جزم الفعل المضارع"},
-    {id:8, t:"اسم الزمان واسم المكان"},
-    {id:9, t:"الميزان الصرفي والمصدر"},
-  ];
+<div class="map">
+خريطة المفاهيم<br>
+الجملة الاسمية = مبتدأ + خبر
+</div>
 
-  const cards = document.getElementById("cards");
-  cards.innerHTML = lessons.map(L => `
-    <div class="card">
-      <div style="font-weight:1000;font-size:16px">📘 الدرس ${L.id}: ${L.t}</div>
-      <div class="muted" style="margin-top:6px">افتح الدرس أو ابدأ التدريب.</div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
-        <a class="btn primary" href="lesson.html?id=${L.id}">فتح الدرس</a>
-        <a class="btn ghost" href="lesson.html?id=${L.id}#quiz">تدريب</a>
-      </div>
-    </div>
-  `).join("");
-</script>
+<div class="example">
+مثال:<br>
+الطالبُ مجتهدٌ
+</div>
+
+<div class="syntax">
+الإعراب:<br>
+الطالبُ : مبتدأ مرفوع<br>
+مجتهدٌ : خبر مرفوع
+</div>
+
+<button>تدرّب</button>
+
+</div>
+
+
+<div class="lesson">
+<h2>الدرس 2 : الجملة الفعلية</h2>
+
+<div class="map">
+خريطة المفاهيم<br>
+الجملة الفعلية = فعل + فاعل + مفعول به
+</div>
+
+<div class="example">
+مثال:<br>
+كتبَ الطالبُ الدرسَ
+</div>
+
+<div class="syntax">
+الإعراب:<br>
+كتبَ : فعل ماض<br>
+الطالبُ : فاعل مرفوع<br>
+الدرسَ : مفعول به منصوب
+</div>
+
+<button>تدرّب</button>
+
+</div>
+
+
+<div class="lesson">
+<h2>الدرس 3 : الفاعل</h2>
+
+<div class="map">
+خريطة المفاهيم<br>
+الفاعل : اسم مرفوع يدل على من قام بالفعل
+</div>
+
+<div class="example">
+مثال:<br>
+نجحَ الطالبُ
+</div>
+
+<button>تدرّب</button>
+
+</div>
+
+
+<div class="lesson">
+<h2>الدرس 4 : المفعول به</h2>
+
+<div class="map">
+خريطة المفاهيم<br>
+المفعول به : اسم منصوب وقع عليه الفعل
+</div>
+
+<div class="example">
+مثال:<br>
+قرأ الطالبُ الكتابَ
+</div>
+
+<button>تدرّب</button>
+
+</div>
+
+
+<div class="lesson">
+<h2>الدرس 5 : المبتدأ والخبر</h2>
+
+<div class="map">
+خريطة المفاهيم<br>
+المبتدأ : اسم مرفوع في أول الجملة<br>
+الخبر : ما يتمم معنى المبتدأ
+</div>
+
+<div class="example">
+مثال:<br>
+العلمُ نورٌ
+</div>
+
+<button>تدرّب</button>
+
+</div>
+
 </body>
 </html>
