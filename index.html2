@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الدروس - منصة لغتي</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --light-bg-1:#fff7ed;
+      --light-bg-2:#ffffff;
+      --light-main:#f97316;
+      --light-main-2:#fb923c;
+      --light-card:rgba(255,255,255,.92);
+      --light-text:#2b2b2b;
+      --light-sub:#7c4a1d;
+      --light-border:rgba(249,115,22,.16);
+
+      --dark-bg-1:#0f172a;
+      --dark-bg-2:#0b1f35;
+      --dark-main:#0f766e;
+      --dark-main-2:#14532d;
+      --dark-card:rgba(9,18,35,.88);
+      --dark-text:#f8fafc;
+      --dark-sub:#b8d6d0;
+      --dark-border:rgba(16,185,129,.16);
+    }
+
+    body{
+      font-family:Tahoma,Arial,sans-serif;
+      color:var(--light-text);
+      min-height:100vh;
+      background:linear-gradient(135deg,var(--light-bg-1),var(--light-bg-2));
+      transition:.35s;
+    }
+
+    body.dark{
+      color:var(--dark-text);
+      background:linear-gradient(135deg,var(--dark-bg-1),var(--dark-bg-2));
+    }
+
+    .container{
+      width:min(1100px,92%);
+      margin:28px auto;
+    }
+
+    .topbar{
+      background:linear-gradient(90deg,var(--light-main),var(--light-main-2));
+      color:#fff;
+      padding:18px;
+      border-radius:24px;
+      text-align:center;
+      font-size:30px;
+      font-weight:800;
+      margin-bottom:20px;
+    }
+
+    body.dark .topbar{
+      background:linear-gradient(90deg,var(--dark-main),var(--dark-main-2));
+    }
+
+    .tools{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-bottom:20px;
+    }
+
+    .tools button{
+      border:none;
+      cursor:pointer;
+      padding:12px 18px;
+      border-radius:16px;
+      font-size:15px;
+      font-weight:700;
+      color:#fff;
+      background:linear-gradient(135deg,var(--light-main),var(--light-main-2));
+    }
+
+    body.dark .tools button{
+      background:linear-gradient(135deg,var(--dark-main),var(--dark-main-2));
+    }
+
+    .intro{
+      background:var(--light-card);
+      border:1px solid var(--light-border);
+      border-radius:24px;
+      padding:20px;
+      text-align:center;
+      line-height:2;
+      margin-bottom:22px;
+    }
+
+    body.dark .intro{
+      background:var(--dark-card);
+      border-color:var(--dark-border);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .card{
+      display:block;
+      text-decoration:none;
+      color:inherit;
+      background:var(--light-card);
+      border:1px solid var(--light-border);
+      border-radius:24px;
+      padding:22px;
+      min-height:170px;
+      transition:.25s;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+    }
+
+    body.dark .card{
+      background:var(--dark-card);
+      border-color:var(--dark-border);
+    }
+
+    .num{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-weight:800;
+      margin-bottom:14px;
+      background:linear-gradient(135deg,var(--light-main),var(--light-main-2));
+    }
+
+    body.dark .num{
+      background:linear-gradient(135deg,var(--dark-main),var(--dark-main-2));
+    }
+
+    .card h3{
+      font-size:20px;
+      line-height:1.8;
+      margin-bottom:10px;
+    }
+
+    .card p{
+      font-size:14px;
+      line-height:1.9;
+      color:var(--light-sub);
+      font-weight:700;
+    }
+
+    body.dark .card p{
+      color:var(--dark-sub);
+    }
+
+    @media (max-width:900px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media (max-width:650px){
+      .grid{grid-template-columns:1fr}
+      .topbar{font-size:24px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">📘 دروس مادة لغتي</div>
+
+    <div class="tools">
+      <button onclick="history.back()">⬅ رجوع</button>
+      <button onclick="setDark()">🌙 داكن</button>
+      <button onclick="setLight()">☀️ فاتح</button>
+    </div>
+
+    <div class="intro">
+      <h2>اختر الدرس</h2>
+      <p>كل درس يحتوي على رابط شرح من عين ثم اختبار من 10 أسئلة اختيار من متعدد.</p>
+    </div>
+
+    <div class="grid">
+      <a class="card" href="lesson1.html"><div class="num">1</div><h3>أسلوب الشرط والتوكيد</h3><p>شرح فيديو + اختبار</p></a>
+      <a class="card" href="lesson2.html"><div class="num">2</div><h3>تنوين الاسم المقصور والمنقوص والممدود</h3><p>شرح فيديو + اختبار</p></a>
+      <a class="card" href="lesson3.html"><div class="num">3</div><h3>الألف اللينة المتطرفة في الأفعال والأسماء والحروف</h3><p>شرح فيديو + اختبار</p></a>
+      <a class="card" href="lesson4.html"><div class="num">4</div><h3>دخول حروف الجر على (ما) و(من)</h3><p>شرح فيديو + اختبار</p></a>
+      <a class="card" href="lesson5.html"><div class="num">5</div><h3>رفع الفعل المضارع</h3><p>شرح فيديو + اختبار</p></a>
+      <a class="card" href="lesson6.html"><div class="num">6</div><h3>نصب الفعل المضارع</h3><p>شرح فيديو + اختبار</p></a>
+      <a class="card" href="lesson7.html"><div class="num">7</div><h3>جزم الفعل المضارع</h3><p>شرح فيديو + اختبار</p></a>
+      <a class="card" href="lesson8.html"><div class="num">8</div><h3>اسم الزمان واسم المكان</h3><p>شرح فيديو + اختبار</p></a>
+      <a class="card" href="lesson9.html"><div class="num">9</div><h3>المشتقات / المصادر</h3><p>شرح فيديو + اختبار</p></a>
+    </div>
+  </div>
+
+  <script>
+    function setDark(){
+      document.body.classList.add("dark");
+      localStorage.setItem("lugati_lessons_theme","dark");
+    }
+    function setLight(){
+      document.body.classList.remove("dark");
+      localStorage.setItem("lugati_lessons_theme","light");
+    }
+    if(localStorage.getItem("lugati_lessons_theme")==="dark"){
+      document.body.classList.add("dark");
+    }
+  </script>
+</body>
+</html>
