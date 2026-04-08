@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>اختبار أسلوب الشرط والتوكيد</title>
+  <title>اختبار الدرس الأول</title>
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
     :root{
       --light-bg-1:#fff7ed;
       --light-bg-2:#ffffff;
@@ -20,16 +25,16 @@
       --dark-bg-2:#0b1f35;
       --dark-main:#0f766e;
       --dark-main-2:#14532d;
-      --dark-card:rgba(9,18,35,.9);
+      --dark-card:rgba(9,18,35,.92);
       --dark-text:#f8fafc;
       --dark-sub:#b8d6d0;
       --dark-border:rgba(16,185,129,.16);
     }
 
     body{
-      font-family:Tahoma,Arial,sans-serif;
-      color:var(--light-text);
+      font-family:Tahoma, Arial, sans-serif;
       min-height:100vh;
+      color:var(--light-text);
       background:linear-gradient(135deg,var(--light-bg-1),var(--light-bg-2));
       transition:.35s;
       padding:20px;
@@ -60,7 +65,31 @@
       background:linear-gradient(90deg,var(--dark-main),var(--dark-main-2));
     }
 
-    .card{
+    .tools{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:20px;
+    }
+
+    .tools button{
+      border:none;
+      cursor:pointer;
+      padding:12px 18px;
+      border-radius:16px;
+      font-size:15px;
+      font-weight:700;
+      color:#fff;
+      background:linear-gradient(135deg,var(--light-main),var(--light-main-2));
+    }
+
+    body.dark .tools button{
+      background:linear-gradient(135deg,var(--dark-main),var(--dark-main-2));
+    }
+
+    .info-card,
+    .question-card{
       background:var(--light-card);
       border:1px solid var(--light-border);
       border-radius:24px;
@@ -68,13 +97,19 @@
       margin-bottom:18px;
     }
 
-    body.dark .card{
+    body.dark .info-card,
+    body.dark .question-card{
       background:var(--dark-card);
       border-color:var(--dark-border);
     }
 
+    .info-card p{
+      font-size:18px;
+      line-height:2;
+    }
+
     .question{
-      margin-bottom:20px;
+      margin-bottom:18px;
       padding-bottom:18px;
       border-bottom:1px solid rgba(0,0,0,.08);
     }
@@ -83,21 +118,803 @@
       border-bottom:1px solid rgba(255,255,255,.08);
     }
 
-    .question p{
-      font-size:19px;
-      font-weight:700;
-      margin-bottom:10px;
+    .question:last-child{
+      border-bottom:none;
+      margin-bottom:0;
+      padding-bottom:0;
+    }
+
+    .question h3{
+      font-size:20px;
+      margin-bottom:12px;
+      color:var(--light-main);
+    }
+
+    body.dark .question h3{
+      color:#34d399;
     }
 
     label{
       display:block;
-      margin:8px 0;
+      margin:10px 0;
       font-size:17px;
       cursor:pointer;
+      line-height:1.9;
     }
 
-    .submit,
-    .back{
+    input[type="radio"]{
+      margin-left:8px;
+      transform:scale(1.1);
+    }
+
+    .submit-btn{
+      width:100%;
       border:none;
       cursor:pointer;
-      padding:14px
+      padding:16px;
+      border-radius:18px;
+      font-size:20px;
+      font-weight:800;
+      color:#fff;
+      background:linear-gradient(135deg,var(--light-main),var(--light-main-2));
+      margin-top:8px;
+    }
+
+    body.dark .submit-btn{
+      background:linear-gradient(135deg,var(--dark-main),var(--dark-main-2));
+    }
+
+    .status{
+      margin-top:16px;
+      text-align:center;
+      font-size:18px;
+      font-weight:700;
+      color:var(--light-sub);
+      min-height:28px;
+    }
+
+    body.dark .status{
+      color:var(--dark-sub);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">📝 اختبار الدرس الأول: أسلوب الشرط والتوكيد</div>
+
+    <div class="tools">
+      <button onclick="history.back()">⬅ رجوع</button>
+      <button onclick="setDark()">🌙 داكن</button>
+      <button onclick="setLight()">☀️ فاتح</button>
+    </div>
+
+    <div class="info-card">
+      <p><strong>اسم الطالب:</strong> <span id="studentName">غير محفوظ</span></p>
+      <p><strong>الصف:</strong> <span id="studentClass">غير محفوظ</span></p>
+      <p><strong>عدد الأسئلة:</strong> 10</p>
+    </div>
+
+    <div class="question-card">
+      <form id="quizForm">
+
+        <div class="question">
+          <h3>1) أسلوب الشرط هو:</h3>
+          <label><input type="radio" name="q1" value="1"> تركيب لغوي يربط بين جملتين</label>
+          <label><input type="radio" name="q1" value="0"> أسلوب يدل على النداء فقط</label>
+          <label><input type="radio" name="q1" value="0"> أسلوب لا يحتاج أداة</label>
+        </div>
+
+        <div class="question">
+          <h3>2) من أدوات الشرط:</h3>
+          <label><input type="radio" name="q2" value="1"> من</label>
+          <label><input type="radio" name="q2" value="0"> إلى</label>
+          <label><input type="radio" name="q2" value="0"> على</label>
+        </div>
+
+        <div class="question">
+          <h3>3) من أركان أسلوب الشرط:</h3>
+          <label><input type="radio" name="q3" value="1"> فعل الشرط</label>
+          <label><input type="radio" name="q3" value="0"> المضاف إليه</label>
+          <label><input type="radio" name="q3" value="0"> التمييز</label>
+        </div>
+
+        <div class="question">
+          <h3>4) جواب الشرط هو:</h3>
+          <label><input type="radio" name="q4" value="1"> الجملة الناتجة عن تحقق الشرط</label>
+          <label><input type="radio" name="q4" value="0"> الأداة فقط</label>
+          <label><input type="radio" name="q4" value="0"> الاسم المرفوع</label>
+        </div>
+
+        <div class="question">
+          <h3>5) الجملة الصحيحة لأسلوب الشرط هي:</h3>
+          <label><input type="radio" name="q5" value="1"> من يجتهد ينجح</label>
+          <label><input type="radio" name="q5" value="0"> الطالب مجتهد</label>
+          <label><input type="radio" name="q5" value="0"> هل ذهبت إلى المدرسة؟</label>
+        </div>
+
+        <div class="question">
+          <h3>6) التوكيد يفيد:</h3>
+          <label><input type="radio" name="q6" value="1"> ترسيخ المعنى وتقويته</label>
+          <label><input type="radio" name="q6" value="0"> حذف المعنى</label>
+          <label><input type="radio" name="q6" value="0"> تقليل أهمية الكلام</label>
+        </div>
+
+        <div class="question">
+          <h3>7) من ألفاظ التوكيد:</h3>
+          <label><input type="radio" name="q7" value="1"> نفس</label>
+          <label><input type="radio" name="q7" value="0"> بيت</label>
+          <label><input type="radio" name="q7" value="0"> قلم</label>
+        </div>
+
+        <div class="question">
+          <h3>8) التوكيد بكلمة (كل) يفيد:</h3>
+          <label><input type="radio" name="q8" value="1"> عموم التوكيد</label>
+          <label><input type="radio" name="q8" value="0"> الاستفهام</label>
+          <label><input type="radio" name="q8" value="0"> النداء</label>
+        </div>
+
+        <div class="question">
+          <h3>9) في الجملة: "إن تهمل تنظيف أسنانك ينخرها السوس" أداة الشرط هي:</h3>
+          <label><input type="radio" name="q9" value="1"> إن</label>
+          <label><input type="radio" name="q9" value="0"> تنظيف</label>
+          <label><input type="radio" name="q9" value="0"> السوس</label>
+        </div>
+
+        <div class="question">
+          <h3>10) في الجملة: "من يتبع نصح الطبيب يحافظ على صحته" جواب الشرط هو:</h3>
+          <label><input type="radio" name="q10" value="1"> يحافظ على صحته</label>
+          <label><input type="radio" name="q10" value="0"> من</label>
+          <label><input type="radio" name="q10" value="0"> نصح الطبيب</label>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="submitQuiz()">إرسال الاختبار</button>
+        <div class="status" id="status"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const studentName = localStorage.getItem("lugati_student_name") || "غير محفوظ";
+    const studentClass = localStorage.getItem("lugati_student_class") || "غير محفوظ";
+
+    document.getElementById("studentName").textContent = studentName;
+    document.getElementById("studentClass").textContent = studentClass;
+
+    function setDark(){
+      document.body.classList.add("dark");
+      localStorage.setItem("lugati_lessons_theme","dark");
+    }
+
+    function setLight(){
+      document.body.classList.remove("dark");
+      localStorage.setItem("lugati_lessons_theme","light");
+    }
+
+    if(localStorage.getItem("lugati_lessons_theme") === "dark"){
+      document.body.classList.add("dark");
+    }
+
+    async function submitQuiz(){
+      const status = document.getElementById("status");
+      let score = 0;
+      let answered = 0;
+
+      for(let i = 1; i <= 10; i++){
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if(selected){
+          answered++;
+          score += Number(selected.value);
+        }
+      }
+
+      if(answered < 10){
+        status.textContent = "الرجاء الإجابة عن جميع الأسئلة أولًا";
+        return;
+      }
+
+      status.textContent = "جاري إرسال النتيجة...";
+
+      localStorage.setItem("lugati_last_score", score);
+      localStorage.setItem("lugati_last_total", 10);
+      localStorage.setItem("lugati_last_lesson", "أسلوب الشرط والتوكيد");
+
+      const data = {
+        name: studentName,
+        grade: studentClass,
+        lesson: "أسلوب الشرط والتوكيد",
+        score: score,
+        total: 10
+      };
+
+      try{
+        await fetch("ضع-هنا-رابط-جوجل-سكريبت", {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(data)
+        });
+
+        status.textContent = "تم إرسال النتيجة بنجاح";
+        
+        setTimeout(() => {
+          location.href = "../results/index.html";
+        }, 1000);
+
+      }catch(error){
+        status.textContent = "تعذر إرسال النتيجة، لكن تم حفظها محليًا";
+        
+        setTimeout(() => {
+          location.href = "../results/index.html";
+        }, 1200);
+      }
+    }
+  </script>
+</body>
+</html>
+<title>اختبار الدرس الثاني</title>
+<div class="topbar">📝 اختبار الدرس الثاني: تنوين الاسم المقصور والمنقوص والممدود</div>
+<div class="question">
+  <h3>1) الاسم المقصور يلازمه:</h3>
+  <label><input type="radio" name="q1" value="1"> تنوين واحد في الحالات الثلاث</label>
+  <label><input type="radio" name="q1" value="0"> ضمتان دائمًا</label>
+  <label><input type="radio" name="q1" value="0"> حذف الحرف الأخير</label>
+</div>
+
+<div class="question">
+  <h3>2) من أمثلة الاسم المقصور:</h3>
+  <label><input type="radio" name="q2" value="1"> فتًى</label>
+  <label><input type="radio" name="q2" value="0"> دعاءٍ</label>
+  <label><input type="radio" name="q2" value="0"> راضٍ</label>
+</div>
+
+<div class="question">
+  <h3>3) الاسم المنقوص في حالتي الرفع والجر ينوّن بـ:</h3>
+  <label><input type="radio" name="q3" value="1"> كسرتين بعد حذف الياء</label>
+  <label><input type="radio" name="q3" value="0"> فتحتين</label>
+  <label><input type="radio" name="q3" value="0"> ضمتين فوق الهمزة</label>
+</div>
+
+<div class="question">
+  <h3>4) مثال الاسم المنقوص:</h3>
+  <label><input type="radio" name="q4" value="1"> راضٍ</label>
+  <label><input type="radio" name="q4" value="0"> عصًا</label>
+  <label><input type="radio" name="q4" value="0"> دعاءٌ</label>
+</div>
+
+<div class="question">
+  <h3>5) الاسم المنقوص في حالة النصب ينوّن بـ:</h3>
+  <label><input type="radio" name="q5" value="1"> فتحتين على الياء قبل الألف</label>
+  <label><input type="radio" name="q5" value="0"> كسرتين فقط</label>
+  <label><input type="radio" name="q5" value="0"> حذف التنوين</label>
+</div>
+
+<div class="question">
+  <h3>6) مثال الاسم المنقوص في النصب:</h3>
+  <label><input type="radio" name="q6" value="1"> راضيًا</label>
+  <label><input type="radio" name="q6" value="0"> راضٍ</label>
+  <label><input type="radio" name="q6" value="0"> فتًى</label>
+</div>
+
+<div class="question">
+  <h3>7) الاسم الممدود في الرفع ينوّن بـ:</h3>
+  <label><input type="radio" name="q7" value="1"> ضمتين</label>
+  <label><input type="radio" name="q7" value="0"> فتحتين قبل الألف</label>
+  <label><input type="radio" name="q7" value="0"> حذف الهمزة</label>
+</div>
+
+<div class="question">
+  <h3>8) مثال الاسم الممدود:</h3>
+  <label><input type="radio" name="q8" value="1"> دعاءٌ</label>
+  <label><input type="radio" name="q8" value="0"> عصًا</label>
+  <label><input type="radio" name="q8" value="0"> فتى</label>
+</div>
+
+<div class="question">
+  <h3>9) في حالة الجر ينوّن الاسم الممدود بـ:</h3>
+  <label><input type="radio" name="q9" value="1"> كسرتين</label>
+  <label><input type="radio" name="q9" value="0"> ضمتين</label>
+  <label><input type="radio" name="q9" value="0"> فتحتين</label>
+</div>
+
+<div class="question">
+  <h3>10) من أمثلة الاسم المقصور المنوّن:</h3>
+  <label><input type="radio" name="q10" value="1"> عصًا</label>
+  <label><input type="radio" name="q10" value="0"> دعاءٍ</label>
+  <label><input type="radio" name="q10" value="0"> راضٍ</label>
+</div>
+<title>اختبار الدرس الثالث</title>
+<div class="topbar">📝 اختبار الدرس الثالث: الألف اللينة المتطرفة</div>
+<div class="question">
+  <h3>1) في الفعل الثلاثي إذا كان أصل الألف واو فإنها تكتب:</h3>
+  <label><input type="radio" name="q1" value="1"> قائمة</label>
+  <label><input type="radio" name="q1" value="0"> على صورة الياء دائمًا</label>
+  <label><input type="radio" name="q1" value="0"> تحذف</label>
+</div>
+
+<div class="question">
+  <h3>2) في الفعل الثلاثي إذا كان أصل الألف ياء فإنها تكتب:</h3>
+  <label><input type="radio" name="q2" value="1"> على صورة الياء (ى)</label>
+  <label><input type="radio" name="q2" value="0"> قائمة دائمًا</label>
+  <label><input type="radio" name="q2" value="0"> همزة</label>
+</div>
+
+<div class="question">
+  <h3>3) من أمثلة فوق الثلاثي التي تكتب على صورة الياء:</h3>
+  <label><input type="radio" name="q3" value="1"> صلّى</label>
+  <label><input type="radio" name="q3" value="0"> يحيا</label>
+  <label><input type="radio" name="q3" value="0"> دعا</label>
+</div>
+
+<div class="question">
+  <h3>4) إذا سبقت الألف بياء في الفعل فوق الثلاثي فإنها تكتب:</h3>
+  <label><input type="radio" name="q4" value="1"> قائمة</label>
+  <label><input type="radio" name="q4" value="0"> على صورة الياء</label>
+  <label><input type="radio" name="q4" value="0"> لا تكتب</label>
+</div>
+
+<div class="question">
+  <h3>5) من أمثلة ذلك:</h3>
+  <label><input type="radio" name="q5" value="1"> يحيا</label>
+  <label><input type="radio" name="q5" value="0"> استعلى</label>
+  <label><input type="radio" name="q5" value="0"> اختفى</label>
+</div>
+
+<div class="question">
+  <h3>6) من طرق معرفة أصل الألف اللينة في الأفعال:</h3>
+  <label><input type="radio" name="q6" value="1"> المضارع أو المصدر</label>
+  <label><input type="radio" name="q6" value="0"> التنوين فقط</label>
+  <label><input type="radio" name="q6" value="0"> حذف الحرف الأول</label>
+</div>
+
+<div class="question">
+  <h3>7) في الأسماء الثلاثية إذا كان أصل الألف واو فإنها تكتب:</h3>
+  <label><input type="radio" name="q7" value="1"> قائمة</label>
+  <label><input type="radio" name="q7" value="0"> على صورة الياء دائمًا</label>
+  <label><input type="radio" name="q7" value="0"> همزة</label>
+</div>
+
+<div class="question">
+  <h3>8) من الحروف التي تكتب ألفها على صورة الياء:</h3>
+  <label><input type="radio" name="q8" value="1"> إلى</label>
+  <label><input type="radio" name="q8" value="0"> لا</label>
+  <label><input type="radio" name="q8" value="0"> لولا</label>
+</div>
+
+<div class="question">
+  <h3>9) من الحروف التي تكتب ألفها قائمة:</h3>
+  <label><input type="radio" name="q9" value="1"> كلا</label>
+  <label><input type="radio" name="q9" value="0"> على</label>
+  <label><input type="radio" name="q9" value="0"> بلى</label>
+</div>
+
+<div class="question">
+  <h3>10) كلمة (استحيا) كتبت ألفها قائمة لأنها:</h3>
+  <label><input type="radio" name="q10" value="1"> سبقت بياء</label>
+  <label><input type="radio" name="q10" value="0"> أصلها واو</label>
+  <label><input type="radio" name="q10" value="0"> اسم ثلاثي</label>
+</div>
+<title>اختبار الدرس الرابع</title>
+<div class="topbar">📝 اختبار الدرس الرابع: دخول حروف الجر على ما ومن</div>
+<div class="question">
+  <h3>1) عند دخول حرف الجر على (ما) الاستفهامية فإن ألفها:</h3>
+  <label><input type="radio" name="q1" value="1"> تحذف</label>
+  <label><input type="radio" name="q1" value="0"> تبقى دائمًا</label>
+  <label><input type="radio" name="q1" value="0"> تقلب واوًا</label>
+</div>
+
+<div class="question">
+  <h3>2) عند دخول (من) أو (عن) على (ما) أو (من) فإن النون تقلب:</h3>
+  <label><input type="radio" name="q2" value="1"> ميمًا</label>
+  <label><input type="radio" name="q2" value="0"> ألفًا</label>
+  <label><input type="radio" name="q2" value="0"> ياءً</label>
+</div>
+
+<div class="question">
+  <h3>3) ألف (ما) الاستفهامية تحذف إذا سبقت بـ:</h3>
+  <label><input type="radio" name="q3" value="1"> حرف جر</label>
+  <label><input type="radio" name="q3" value="0"> فعل أمر</label>
+  <label><input type="radio" name="q3" value="0"> نداء</label>
+</div>
+
+<div class="question">
+  <h3>4) إذا لم تكن (ما) للاستفهام فإن ألفها:</h3>
+  <label><input type="radio" name="q4" value="1"> لا تحذف</label>
+  <label><input type="radio" name="q4" value="0"> تحذف دائمًا</label>
+  <label><input type="radio" name="q4" value="0"> تقلب ميمًا</label>
+</div>
+
+<div class="question">
+  <h3>5) الفتحة بعد حذف الألف تدل على:</h3>
+  <label><input type="radio" name="q5" value="1"> الألف المحذوفة</label>
+  <label><input type="radio" name="q5" value="0"> التنوين</label>
+  <label><input type="radio" name="q5" value="0"> الضمة</label>
+</div>
+
+<div class="question">
+  <h3>6) من الحرفين المذكورين في القاعدة:</h3>
+  <label><input type="radio" name="q6" value="1"> من وعن</label>
+  <label><input type="radio" name="q6" value="0"> إلى وعلى</label>
+  <label><input type="radio" name="q6" value="0"> الباء والكاف</label>
+</div>
+
+<div class="question">
+  <h3>7) (ما) في هذه القاعدة تكون:</h3>
+  <label><input type="radio" name="q7" value="1"> استفهامية</label>
+  <label><input type="radio" name="q7" value="0"> اسم إشارة</label>
+  <label><input type="radio" name="q7" value="0"> فعلًا</label>
+</div>
+
+<div class="question">
+  <h3>8) (من) المذكورة في القاعدة قد تكون:</h3>
+  <label><input type="radio" name="q8" value="1"> استفهامية أو موصولة</label>
+  <label><input type="radio" name="q8" value="0"> فعلًا مضارعًا</label>
+  <label><input type="radio" name="q8" value="0"> حرف نصب</label>
+</div>
+
+<div class="question">
+  <h3>9) الهدف من القاعدة هو بيان:</h3>
+  <label><input type="radio" name="q9" value="1"> التغير في الرسم عند دخول حروف الجر</label>
+  <label><input type="radio" name="q9" value="0"> جمع التكسير</label>
+  <label><input type="radio" name="q9" value="0"> المفعول به</label>
+</div>
+
+<div class="question">
+  <h3>10) عند الإدغام تصبح الميم:</h3>
+  <label><input type="radio" name="q10" value="1"> مشددة في النطق</label>
+  <label><input type="radio" name="q10" value="0"> محذوفة</label>
+  <label><input type="radio" name="q10" value="0"> ساكنة فقط بلا إدغام</label>
+</div>
+<title>اختبار الدرس الخامس</title>
+<div class="topbar">📝 اختبار الدرس الخامس: رفع الفعل المضارع</div>
+<div class="question">
+  <h3>1) الفعل المضارع الصحيح الآخر هو:</h3>
+  <label><input type="radio" name="q1" value="1"> ما ليس آخره حرف علة</label>
+  <label><input type="radio" name="q1" value="0"> ما آخره ألف فقط</label>
+  <label><input type="radio" name="q1" value="0"> ما كان ماضيًا</label>
+</div>
+
+<div class="question">
+  <h3>2) الفعل المضارع المعتل الآخر هو:</h3>
+  <label><input type="radio" name="q2" value="1"> ما آخره حرف علة</label>
+  <label><input type="radio" name="q2" value="0"> ما بدأ بحرف علة</label>
+  <label><input type="radio" name="q2" value="0"> كل فعل أمر</label>
+</div>
+
+<div class="question">
+  <h3>3) علامة رفع الصحيح الآخر:</h3>
+  <label><input type="radio" name="q3" value="1"> الضمة الظاهرة</label>
+  <label><input type="radio" name="q3" value="0"> حذف النون</label>
+  <label><input type="radio" name="q3" value="0"> الفتحة</label>
+</div>
+
+<div class="question">
+  <h3>4) من أمثلة الصحيح الآخر:</h3>
+  <label><input type="radio" name="q4" value="1"> يأكل</label>
+  <label><input type="radio" name="q4" value="0"> يرضى</label>
+  <label><input type="radio" name="q4" value="0"> يدعو</label>
+</div>
+
+<div class="question">
+  <h3>5) علامة رفع المعتل بالألف:</h3>
+  <label><input type="radio" name="q5" value="1"> الضمة المقدرة للتعذر</label>
+  <label><input type="radio" name="q5" value="0"> الضمة الظاهرة</label>
+  <label><input type="radio" name="q5" value="0"> حذف حرف العلة</label>
+</div>
+
+<div class="question">
+  <h3>6) علامة رفع المعتل بالواو أو الياء:</h3>
+  <label><input type="radio" name="q6" value="1"> الضمة المقدرة للثقل</label>
+  <label><input type="radio" name="q6" value="0"> الفتحة المقدرة</label>
+  <label><input type="radio" name="q6" value="0"> السكون</label>
+</div>
+
+<div class="question">
+  <h3>7) من أمثلة الأفعال الخمسة:</h3>
+  <label><input type="radio" name="q7" value="1"> يأكلون</label>
+  <label><input type="radio" name="q7" value="0"> يأكل</label>
+  <label><input type="radio" name="q7" value="0"> دعا</label>
+</div>
+
+<div class="question">
+  <h3>8) علامة رفع الأفعال الخمسة:</h3>
+  <label><input type="radio" name="q8" value="1"> ثبوت النون</label>
+  <label><input type="radio" name="q8" value="0"> حذف النون</label>
+  <label><input type="radio" name="q8" value="0"> الفتحة الظاهرة</label>
+</div>
+
+<div class="question">
+  <h3>9) الفعل (يرضى) مثال على:</h3>
+  <label><input type="radio" name="q9" value="1"> مضارع معتل بالألف</label>
+  <label><input type="radio" name="q9" value="0"> مضارع صحيح الآخر</label>
+  <label><input type="radio" name="q9" value="0"> فعل أمر</label>
+</div>
+
+<div class="question">
+  <h3>10) الفعل (يجري) علامة رفعه:</h3>
+  <label><input type="radio" name="q10" value="1"> ضمة مقدرة للثقل</label>
+  <label><input type="radio" name="q10" value="0"> ضمة ظاهرة</label>
+  <label><input type="radio" name="q10" value="0"> حذف النون</label>
+</div>
+<title>اختبار الدرس السادس</title>
+<div class="topbar">📝 اختبار الدرس السادس: نصب الفعل المضارع</div>
+<div class="question">
+  <h3>1) من حروف نصب الفعل المضارع:</h3>
+  <label><input type="radio" name="q1" value="1"> أن</label>
+  <label><input type="radio" name="q1" value="0"> لم</label>
+  <label><input type="radio" name="q1" value="0"> لا الناهية</label>
+</div>
+
+<div class="question">
+  <h3>2) من حروف النصب أيضًا:</h3>
+  <label><input type="radio" name="q2" value="1"> لن</label>
+  <label><input type="radio" name="q2" value="0"> لام الأمر</label>
+  <label><input type="radio" name="q2" value="0"> هل</label>
+</div>
+
+<div class="question">
+  <h3>3) من حروف النصب كذلك:</h3>
+  <label><input type="radio" name="q3" value="1"> كي</label>
+  <label><input type="radio" name="q3" value="0"> من</label>
+  <label><input type="radio" name="q3" value="0"> إلى</label>
+</div>
+
+<div class="question">
+  <h3>4) علامة نصب الصحيح الآخر:</h3>
+  <label><input type="radio" name="q4" value="1"> الفتحة الظاهرة</label>
+  <label><input type="radio" name="q4" value="0"> الضمة الظاهرة</label>
+  <label><input type="radio" name="q4" value="0"> السكون</label>
+</div>
+
+<div class="question">
+  <h3>5) في المعتل بالواو أو الياء تكون علامة النصب:</h3>
+  <label><input type="radio" name="q5" value="1"> الفتحة الظاهرة</label>
+  <label><input type="radio" name="q5" value="0"> الضمة المقدرة</label>
+  <label><input type="radio" name="q5" value="0"> السكون</label>
+</div>
+
+<div class="question">
+  <h3>6) في المعتل بالألف تكون علامة النصب:</h3>
+  <label><input type="radio" name="q6" value="1"> الفتحة المقدرة</label>
+  <label><input type="radio" name="q6" value="0"> الفتحة الظاهرة</label>
+  <label><input type="radio" name="q6" value="0"> الضمة المقدرة</label>
+</div>
+
+<div class="question">
+  <h3>7) علامة نصب الأفعال الخمسة:</h3>
+  <label><input type="radio" name="q7" value="1"> حذف النون</label>
+  <label><input type="radio" name="q7" value="0"> ثبوت النون</label>
+  <label><input type="radio" name="q7" value="0"> الفتحة المقدرة</label>
+</div>
+
+<div class="question">
+  <h3>8) الجملة التي فيها فعل مضارع منصوب:</h3>
+  <label><input type="radio" name="q8" value="1"> لن يذهبَ</label>
+  <label><input type="radio" name="q8" value="0"> لم يذهبْ</label>
+  <label><input type="radio" name="q8" value="0"> يذهبُ الطالب</label>
+</div>
+
+<div class="question">
+  <h3>9) الفعل (أن نخشى) علامة نصبه:</h3>
+  <label><input type="radio" name="q9" value="1"> الفتحة المقدرة</label>
+  <label><input type="radio" name="q9" value="0"> الفتحة الظاهرة</label>
+  <label><input type="radio" name="q9" value="0"> حذف النون</label>
+</div>
+
+<div class="question">
+  <h3>10) الفعل (لن تذهبوا) من:</h3>
+  <label><input type="radio" name="q10" value="1"> الأفعال الخمسة</label>
+  <label><input type="radio" name="q10" value="0"> الأفعال الماضية</label>
+  <label><input type="radio" name="q10" value="0"> الأسماء المنقوصة</label>
+</div>
+<title>اختبار الدرس السابع</title>
+<div class="topbar">📝 اختبار الدرس السابع: جزم الفعل المضارع</div>
+<div class="question">
+  <h3>1) من حروف الجزم:</h3>
+  <label><input type="radio" name="q1" value="1"> لم</label>
+  <label><input type="radio" name="q1" value="0"> لن</label>
+  <label><input type="radio" name="q1" value="0"> كي</label>
+</div>
+
+<div class="question">
+  <h3>2) من حروف الجزم أيضًا:</h3>
+  <label><input type="radio" name="q2" value="1"> لا الناهية</label>
+  <label><input type="radio" name="q2" value="0"> أن</label>
+  <label><input type="radio" name="q2" value="0"> من</label>
+</div>
+
+<div class="question">
+  <h3>3) من حروف الجزم كذلك:</h3>
+  <label><input type="radio" name="q3" value="1"> لام الأمر</label>
+  <label><input type="radio" name="q3" value="0"> في</label>
+  <label><input type="radio" name="q3" value="0"> إلى</label>
+</div>
+
+<div class="question">
+  <h3>4) علامة جزم الصحيح الآخر:</h3>
+  <label><input type="radio" name="q4" value="1"> السكون</label>
+  <label><input type="radio" name="q4" value="0"> الفتحة</label>
+  <label><input type="radio" name="q4" value="0"> الضمة</label>
+</div>
+
+<div class="question">
+  <h3>5) علامة جزم المعتل الآخر:</h3>
+  <label><input type="radio" name="q5" value="1"> حذف حرف العلة</label>
+  <label><input type="radio" name="q5" value="0"> ثبوت النون</label>
+  <label><input type="radio" name="q5" value="0"> الضمة المقدرة</label>
+</div>
+
+<div class="question">
+  <h3>6) علامة جزم الأفعال الخمسة:</h3>
+  <label><input type="radio" name="q6" value="1"> حذف النون</label>
+  <label><input type="radio" name="q6" value="0"> الفتحة الظاهرة</label>
+  <label><input type="radio" name="q6" value="0"> الكسرة</label>
+</div>
+
+<div class="question">
+  <h3>7) الجملة التي فيها فعل مضارع مجزوم:</h3>
+  <label><input type="radio" name="q7" value="1"> لم يقصرْ</label>
+  <label><input type="radio" name="q7" value="0"> لن يقصرَ</label>
+  <label><input type="radio" name="q7" value="0"> يقصرُ الطالب</label>
+</div>
+
+<div class="question">
+  <h3>8) الجملة: لا تدعُ إلا الله، علامة الجزم فيها:</h3>
+  <label><input type="radio" name="q8" value="1"> حذف حرف العلة</label>
+  <label><input type="radio" name="q8" value="0"> السكون</label>
+  <label><input type="radio" name="q8" value="0"> حذف النون</label>
+</div>
+
+<div class="question">
+  <h3>9) الفعل (لتساعدي) من:</h3>
+  <label><input type="radio" name="q9" value="1"> الأفعال الخمسة</label>
+  <label><input type="radio" name="q9" value="0"> الأفعال الجامدة</label>
+  <label><input type="radio" name="q9" value="0"> الأسماء الممدودة</label>
+</div>
+
+<div class="question">
+  <h3>10) في الجزم يكون الفعل المضارع:</h3>
+  <label><input type="radio" name="q10" value="1"> مسبوقًا بأداة جزم</label>
+  <label><input type="radio" name="q10" value="0"> دائمًا منصوبًا</label>
+  <label><input type="radio" name="q10" value="0"> اسمًا مجرورًا</label>
+</div>
+<title>اختبار الدرس الثامن</title>
+<div class="topbar">📝 اختبار الدرس الثامن: اسم الزمان واسم المكان</div>
+<div class="question">
+  <h3>1) اسم المكان هو:</h3>
+  <label><input type="radio" name="q1" value="1"> اسم مشتق يدل على مكان وقوع الفعل</label>
+  <label><input type="radio" name="q1" value="0"> اسم يدل على لون</label>
+  <label><input type="radio" name="q1" value="0"> فعل ماضٍ</label>
+</div>
+
+<div class="question">
+  <h3>2) اسم الزمان هو:</h3>
+  <label><input type="radio" name="q2" value="1"> اسم مشتق يدل على زمن وقوع الفعل</label>
+  <label><input type="radio" name="q2" value="0"> حرف جر</label>
+  <label><input type="radio" name="q2" value="0"> ضمير</label>
+</div>
+
+<div class="question">
+  <h3>3) من أمثلة اسم المكان:</h3>
+  <label><input type="radio" name="q3" value="1"> مسجد</label>
+  <label><input type="radio" name="q3" value="0"> موعد</label>
+  <label><input type="radio" name="q3" value="0"> كتب</label>
+</div>
+
+<div class="question">
+  <h3>4) من أمثلة اسم الزمان:</h3>
+  <label><input type="radio" name="q4" value="1"> موعد</label>
+  <label><input type="radio" name="q4" value="0"> مصنع</label>
+  <label><input type="radio" name="q4" value="0"> مسجد</label>
+</div>
+
+<div class="question">
+  <h3>5) اسم الزمان واسم المكان مأخوذان من:</h3>
+  <label><input type="radio" name="q5" value="1"> الفعل</label>
+  <label><input type="radio" name="q5" value="0"> الحرف</label>
+  <label><input type="radio" name="q5" value="0"> الضمير</label>
+</div>
+
+<div class="question">
+  <h3>6) من أوزان اسم الزمان واسم المكان:</h3>
+  <label><input type="radio" name="q6" value="1"> مَفْعَل</label>
+  <label><input type="radio" name="q6" value="0"> فاعول</label>
+  <label><input type="radio" name="q6" value="0"> افتعال</label>
+</div>
+
+<div class="question">
+  <h3>7) ومن أوزانهما أيضًا:</h3>
+  <label><input type="radio" name="q7" value="1"> مَفْعِل</label>
+  <label><input type="radio" name="q7" value="0"> فعّال</label>
+  <label><input type="radio" name="q7" value="0"> تفعيل</label>
+</div>
+
+<div class="question">
+  <h3>8) كلمة (مصنع) تدل على:</h3>
+  <label><input type="radio" name="q8" value="1"> اسم مكان</label>
+  <label><input type="radio" name="q8" value="0"> اسم زمان</label>
+  <label><input type="radio" name="q8" value="0"> فعل مضارع</label>
+</div>
+
+<div class="question">
+  <h3>9) كلمة (مغرب) قد تدل على:</h3>
+  <label><input type="radio" name="q9" value="1"> اسم زمان</label>
+  <label><input type="radio" name="q9" value="0"> ضمير</label>
+  <label><input type="radio" name="q9" value="0"> حرف</label>
+</div>
+
+<div class="question">
+  <h3>10) الهدف من اسم الزمان واسم المكان هو الدلالة على:</h3>
+  <label><input type="radio" name="q10" value="1"> زمان الفعل أو مكانه</label>
+  <label><input type="radio" name="q10" value="0"> نوع التنوين</label>
+  <label><input type="radio" name="q10" value="0"> جمع التكسير</label>
+</div>
+<div class="question">
+  <h3>1) الميزان الصرفي هو:</h3>
+  <label><input type="radio" name="q1" value="1"> طريقة لوزن الكلمات في العربية</label>
+  <label><input type="radio" name="q1" value="0"> نوع من الأساليب الإنشائية</label>
+  <label><input type="radio" name="q1" value="0"> علامة ترقيم</label>
+</div>
+
+<div class="question">
+  <h3>2) الكلمة التي اختارها العلماء ميزانًا صرفيًا هي:</h3>
+  <label><input type="radio" name="q2" value="1"> فعل</label>
+  <label><input type="radio" name="q2" value="0"> كتب</label>
+  <label><input type="radio" name="q2" value="0"> جلس</label>
+</div>
+
+<div class="question">
+  <h3>3) الفاء في الميزان الصرفي تقابل:</h3>
+  <label><input type="radio" name="q3" value="1"> الحرف الأول</label>
+  <label><input type="radio" name="q3" value="0"> الحرف الثاني</label>
+  <label><input type="radio" name="q3" value="0"> الحرف الثالث</label>
+</div>
+
+<div class="question">
+  <h3>4) العين في الميزان الصرفي تقابل:</h3>
+  <label><input type="radio" name="q4" value="1"> الحرف الثاني</label>
+  <label><input type="radio" name="q4" value="0"> الحرف الأول</label>
+  <label><input type="radio" name="q4" value="0"> الحرف الأخير فقط</label>
+</div>
+
+<div class="question">
+  <h3>5) اللام في الميزان الصرفي تقابل:</h3>
+  <label><input type="radio" name="q5" value="1"> الحرف الثالث</label>
+  <label><input type="radio" name="q5" value="0"> أول حرف</label>
+  <label><input type="radio" name="q5" value="0"> أداة الشرط</label>
+</div>
+
+<div class="question">
+  <h3>6) ما زاد على الكلمة في الميزان:</h3>
+  <label><input type="radio" name="q6" value="1"> يزاد في الميزان</label>
+  <label><input type="radio" name="q6" value="0"> يحذف دائمًا</label>
+  <label><input type="radio" name="q6" value="0"> لا يوزن</label>
+</div>
+
+<div class="question">
+  <h3>7) المصدر هو:</h3>
+  <label><input type="radio" name="q7" value="1"> اسم من لفظ الفعل يدل على حدث مجرد من الزمن</label>
+  <label><input type="radio" name="q7" value="0"> اسم زمان</label>
+  <label><input type="radio" name="q7" value="0"> حرف نصب</label>
+</div>
+
+<div class="question">
+  <h3>8) المصدر يدل على:</h3>
+  <label><input type="radio" name="q8" value="1"> الحدث فقط دون زمن</label>
+  <label><input type="radio" name="q8" value="0"> المكان فقط</label>
+  <label><input type="radio" name="q8" value="0"> الضمير المستتر</label>
+</div>
+
+<div class="question">
+  <h3>9) من فوائد الميزان الصرفي:</h3>
+  <label><input type="radio" name="q9" value="1"> معرفة بنية الكلمة</label>
+  <label><input type="radio" name="q9" value="0"> معرفة نوع حرف الجر فقط</label>
+  <label><input type="radio" name="q9" value="0"> حذف الألف اللينة</label>
+</div>
+
+<div class="question">
+  <h3>10) المصدر يعد من:</h3>
+  <label><input type="radio" name="q10" value="1"> المشتقات أو الأبواب الصرفية المدروسة</label>
+  <label><input type="radio" name="q10" value="0"> حروف الجزم</label>
+  <label><input type="radio" name="q10" value="0"> أسماء الإشارة</label>
+</div>
