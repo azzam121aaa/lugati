@@ -1,266 +1,127 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>الدروس - منصة لغتي</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الدروس - منصة لغتي</title>
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Tahoma,Arial,sans-serif;
+      min-height:100vh;
+      background:linear-gradient(135deg,#fff7ed,#ffffff);
+    }
 
-:root{
-  --light-bg-1:#fff7ed;
-  --light-bg-2:#ffffff;
-  --light-main:#f97316;
-  --light-main-2:#fb923c;
-  --light-card:#fff;
-  --light-text:#2b2b2b;
-  --light-sub:#7c4a1d;
-  --light-border:rgba(249,115,22,.16);
+    .container{width:min(1100px,92%);margin:28px auto}
 
-  --dark-bg-1:#0f172a;
-  --dark-bg-2:#0b1f35;
-  --dark-main:#0f766e;
-  --dark-main-2:#14532d;
-  --dark-card:#0b1223;
-  --dark-text:#f8fafc;
-  --dark-sub:#b8d6d0;
-  --dark-border:rgba(16,185,129,.16);
-}
+    .topbar{
+      background:linear-gradient(90deg,#f97316,#fb923c);
+      color:#fff;
+      padding:18px;
+      border-radius:20px;
+      text-align:center;
+      font-size:28px;
+      font-weight:800;
+      margin-bottom:20px;
+    }
 
-body{
-  font-family:Tahoma;
-  background:linear-gradient(135deg,var(--light-bg-1),var(--light-bg-2));
-  color:var(--light-text);
-  transition:.3s;
-}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
 
-body.dark{
-  background:linear-gradient(135deg,var(--dark-bg-1),var(--dark-bg-2));
-  color:var(--dark-text);
-}
+    .card{
+      display:block;
+      text-decoration:none;
+      color:#000;
+      background:#fff;
+      border-radius:20px;
+      padding:20px;
+      border:1px solid #eee;
+      transition:.2s;
+    }
 
-.container{
-  width:min(1100px,92%);
-  margin:25px auto;
-}
+    .card:hover{transform:translateY(-5px)}
 
-.topbar{
-  background:linear-gradient(90deg,var(--light-main),var(--light-main-2));
-  color:#fff;
-  padding:18px;
-  border-radius:20px;
-  text-align:center;
-  font-size:28px;
-  font-weight:800;
-  margin-bottom:18px;
-}
+    .num{
+      width:45px;height:45px;
+      background:#f97316;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      font-weight:bold;
+      margin-bottom:10px;
+    }
 
-body.dark .topbar{
-  background:linear-gradient(90deg,var(--dark-main),var(--dark-main-2));
-}
+    @media(max-width:900px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
 
-.tools{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-bottom:18px;
-  flex-wrap:wrap;
-}
-
-button{
-  border:none;
-  padding:10px 14px;
-  border-radius:12px;
-  cursor:pointer;
-  color:#fff;
-  font-weight:700;
-  background:linear-gradient(135deg,var(--light-main),var(--light-main-2));
-}
-
-body.dark button{
-  background:linear-gradient(135deg,var(--dark-main),var(--dark-main-2));
-}
-
-.intro{
-  background:var(--light-card);
-  border:1px solid var(--light-border);
-  padding:18px;
-  border-radius:20px;
-  text-align:center;
-  margin-bottom:18px;
-}
-
-body.dark .intro{
-  background:var(--dark-card);
-  border-color:var(--dark-border);
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-
-.card{
-  text-decoration:none;
-  color:inherit;
-  background:var(--light-card);
-  border:1px solid var(--light-border);
-  border-radius:20px;
-  padding:18px;
-  transition:.2s;
-}
-
-body.dark .card{
-  background:var(--dark-card);
-  border-color:var(--dark-border);
-}
-
-.card:hover{transform:translateY(-4px)}
-
-.num{
-  width:42px;height:42px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-weight:800;
-  margin-bottom:10px;
-  background:linear-gradient(135deg,var(--light-main),var(--light-main-2));
-}
-
-body.dark .num{
-  background:linear-gradient(135deg,var(--dark-main),var(--dark-main-2));
-}
-
-.card h3{font-size:18px;margin-bottom:6px}
-.card p{font-size:13px;color:var(--light-sub)}
-
-body.dark .card p{color:var(--dark-sub)}
-
-.active{
-  outline:3px solid #22c55e;
-}
-
-@media(max-width:900px){
-  .grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:600px){
-  .grid{grid-template-columns:1fr}
-}
-</style>
+    @media(max-width:600px){
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 
 <body>
-
 <div class="container">
 
-<div class="topbar">📘 دروس مادة لغتي</div>
+  <div class="topbar">📘 دروس مادة لغتي</div>
 
-<div class="tools">
-  <button onclick="history.back()">⬅ رجوع</button>
-  <button onclick="setDark()">🌙 داكن</button>
-  <button onclick="setLight()">☀️ فاتح</button>
-</div>
+  <div class="grid">
 
-<div class="intro">
-  <h2>اختر الدرس</h2>
-  <p>كل درس يحتوي على شرح + اختبار</p>
-</div>
+    <!-- إذا ملفاتك في نفس المجلد -->
+    <a class="card" href="./lesson1.html">
+      <div class="num">1</div>
+      <h3>أسلوب الشرط والتوكيد</h3>
+    </a>
 
-<div class="grid">
+    <a class="card" href="./lesson2.html">
+      <div class="num">2</div>
+      <h3>تنوين الاسم المقصور والمنقوص والممدود</h3>
+    </a>
 
-<a class="card" href="lesson1.html" onclick="saveLesson(1)">
-  <div class="num">1</div>
-  <h3>أسلوب الشرط والتوكيد</h3>
-  <p>شرح + اختبار</p>
-</a>
+    <a class="card" href="./lesson3.html">
+      <div class="num">3</div>
+      <h3>الألف اللينة</h3>
+    </a>
 
-<a class="card" href="lesson2.html" onclick="saveLesson(2)">
-  <div class="num">2</div>
-  <h3>الاسم المقصور والمنقوص</h3>
-  <p>شرح + اختبار</p>
-</a>
+    <a class="card" href="./lesson4.html">
+      <div class="num">4</div>
+      <h3>حروف الجر</h3>
+    </a>
 
-<a class="card" href="lesson3.html" onclick="saveLesson(3)">
-  <div class="num">3</div>
-  <h3>الألف اللينة</h3>
-  <p>شرح + اختبار</p>
-</a>
+    <a class="card" href="./lesson5.html">
+      <div class="num">5</div>
+      <h3>رفع الفعل المضارع</h3>
+    </a>
 
-<a class="card" href="lesson4.html" onclick="saveLesson(4)">
-  <div class="num">4</div>
-  <h3>حروف الجر على ما ومن</h3>
-  <p>شرح + اختبار</p>
-</a>
+    <a class="card" href="./lesson6.html">
+      <div class="num">6</div>
+      <h3>نصب الفعل المضارع</h3>
+    </a>
 
-<a class="card" href="lesson5.html" onclick="saveLesson(5)">
-  <div class="num">5</div>
-  <h3>رفع الفعل المضارع</h3>
-  <p>شرح + اختبار</p>
-</a>
+    <a class="card" href="./lesson7.html">
+      <div class="num">7</div>
+      <h3>جزم الفعل المضارع</h3>
+    </a>
 
-<a class="card" href="lesson6.html" onclick="saveLesson(6)">
-  <div class="num">6</div>
-  <h3>نصب الفعل المضارع</h3>
-  <p>شرح + اختبار</p>
-</a>
+    <a class="card" href="./lesson8.html">
+      <div class="num">8</div>
+      <h3>اسم الزمان والمكان</h3>
+    </a>
 
-<a class="card" href="lesson7.html" onclick="saveLesson(7)">
-  <div class="num">7</div>
-  <h3>جزم الفعل المضارع</h3>
-  <p>شرح + اختبار</p>
-</a>
+    <a class="card" href="./lesson9.html">
+      <div class="num">9</div>
+      <h3>المشتقات والمصادر</h3>
+    </a>
 
-<a class="card" href="lesson8.html" onclick="saveLesson(8)">
-  <div class="num">8</div>
-  <h3>اسم الزمان والمكان</h3>
-  <p>شرح + اختبار</p>
-</a>
-
-<a class="card" href="lesson9.html" onclick="saveLesson(9)">
-  <div class="num">9</div>
-  <h3>المشتقات والمصادر</h3>
-  <p>شرح + اختبار</p>
-</a>
+  </div>
 
 </div>
-
-</div>
-
-<script>
-
-// الثيم
-function setDark(){
-  document.body.classList.add("dark");
-  localStorage.setItem("theme","dark");
-}
-
-function setLight(){
-  document.body.classList.remove("dark");
-  localStorage.setItem("theme","light");
-}
-
-if(localStorage.getItem("theme")==="dark"){
-  document.body.classList.add("dark");
-}
-
-// حفظ آخر درس
-function saveLesson(n){
-  localStorage.setItem("lastLesson",n);
-}
-
-// تحديد آخر درس (اختياري)
-window.onload = function(){
-  let last = localStorage.getItem("lastLesson");
-  if(last){
-    console.log("آخر درس:",last);
-  }
-}
-
-</script>
-
 </body>
 </html>
