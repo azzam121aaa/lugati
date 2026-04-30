@@ -1,121 +1,134 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>منصة لغتي</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>منصة لغتي</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
 
-  <style>
-    body{
-      margin:0;
-      font-family:"Tajawal",sans-serif;
-      background:
-      radial-gradient(1200px 600px at 20% 10%, rgba(255,122,0,.12), transparent 60%),
-      radial-gradient(1000px 520px at 80% 30%, rgba(0,180,255,.10), transparent 55%),
-      radial-gradient(900px 520px at 50% 90%, rgba(25,179,107,.10), transparent 55%),
-      #ffffff;
-    }
+<style>
+body{
+  margin:0;
+  font-family:"Tajawal",sans-serif;
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(255,122,0,.12), transparent 60%),
+    radial-gradient(1000px 520px at 80% 30%, rgba(0,180,255,.10), transparent 55%),
+    radial-gradient(900px 520px at 50% 90%, rgba(25,179,107,.10), transparent 55%),
+    #ffffff;
+}
 
-    .topbar{
-      padding:10px;
-      background:linear-gradient(90deg,#ff7a00,#ff0099,#00b4ff,#19b36b);
-      color:#fff;
-      font-weight:900;
-      text-align:center;
-    }
+/* الشريط المتحرك */
+.topbar{
+  position:sticky;
+  top:0;
+  padding:10px;
+  background:linear-gradient(90deg,#ff7a00,#ff0099,#00b4ff,#19b36b);
+  color:#fff;
+  font-weight:900;
+  overflow:hidden;
+}
 
-    .wrap{
-      width:92%;
-      max-width:1000px;
-      margin:20px auto;
-    }
+.track{
+  display:inline-flex;
+  gap:20px;
+  white-space:nowrap;
+  animation:move 15s linear infinite;
+}
 
-    .hero{
-      padding:18px;
-      border-radius:18px;
-      background:#fff;
-      box-shadow:0 18px 45px rgba(0,0,0,.12);
-    }
+@keyframes move{
+  from{transform:translateX(30%)}
+  to{transform:translateX(-120%)}
+}
 
-    h1{
-      margin:0;
-      font-size:28px;
-      font-weight:900;
-    }
+.wrap{
+  width:92%;
+  max-width:1000px;
+  margin:20px auto;
+}
 
-    .sub{
-      color:#555;
-      margin-top:6px;
-      font-weight:700;
-    }
+.hero{
+  padding:18px;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 18px 45px rgba(0,0,0,.12);
+}
 
-    .panel{
-      margin-top:14px;
-      padding:14px;
-      border-radius:16px;
-      background:#f8fafc;
-    }
+h1{
+  margin:0;
+  font-size:28px;
+  font-weight:900;
+}
 
-    input{
-      width:100%;
-      padding:12px;
-      border-radius:12px;
-      border:1px solid #ddd;
-      margin-top:6px;
-    }
+.panel{
+  margin-top:14px;
+  padding:14px;
+  border-radius:16px;
+  background:#f8fafc;
+}
 
-    .btn{
-      padding:12px;
-      border-radius:14px;
-      border:0;
-      font-weight:900;
-      cursor:pointer;
-    }
+input{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  margin-top:6px;
+}
 
-    .primary{
-      background:#ff7a00;
-      color:#fff;
-    }
+.btn{
+  padding:12px;
+  border-radius:14px;
+  border:0;
+  font-weight:900;
+  cursor:pointer;
+}
 
-    .actions{
-      margin-top:16px;
-      display:grid;
-      gap:12px;
-    }
+.primary{
+  background:#ff7a00;
+  color:#fff;
+}
 
-    .big{
-      padding:16px;
-      border-radius:16px;
-      background:linear-gradient(135deg,#ff7a00,#ff9a2f);
-      color:#fff;
-      font-size:18px;
-      text-decoration:none;
-      text-align:center;
-      font-weight:900;
-    }
+.actions{
+  margin-top:16px;
+  display:grid;
+  gap:12px;
+}
 
-    .footer{
-      text-align:center;
-      margin-top:20px;
-      color:#555;
-      font-weight:900;
-    }
-  </style>
+.big{
+  padding:16px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#ff7a00,#ff9a2f);
+  color:#fff;
+  font-size:18px;
+  text-decoration:none;
+  text-align:center;
+  font-weight:900;
+}
+
+.footer{
+  text-align:center;
+  margin-top:20px;
+  color:#555;
+  font-weight:900;
+}
+</style>
 </head>
 
 <body>
 
 <div class="topbar">
-✨ منصة لغتي — مدرسة الإمام الشوكاني ✨
+<div class="track">
+✨ أهلاً بكم في منصة لغتي — مدرسة الإمام الشوكاني ✨
+📚 تعلم بذكاء
+🧠 افهم بسرعة
+🏆 وحقق نتائج مميزة
+</div>
 </div>
 
 <div class="wrap">
 <div class="hero">
 
 <h1>منصة لغتي</h1>
-<p class="sub">كل شيء يعمل — وكل زر يفتح صفحة مستقلة ✅</p>
 
 <div class="panel">
 <h3>بيانات الطالب</h3>
@@ -130,12 +143,14 @@
 
 <div class="actions">
 
-<!-- 🔥 تم الربط هنا -->
+<!-- الدروس -->
 <a class="big" href="https://azzam121aaa.github.io/drs/">📘 الدروس</a>
 
+<!-- الفهم المقروء -->
 <a class="big" href="https://azzam121aaa.github.io/fhm/">📖 الفهم القرائي</a>
 
-<a class="big" href="#">🎧 نصوص الاستماع (لاحقاً)</a>
+<!-- 🔥 كتاب لغتي -->
+<a class="big" href="https://azzam121aaa.github.io/book/">📚 كتاب لغتي + الحل</a>
 
 </div>
 
